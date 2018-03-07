@@ -163,14 +163,14 @@ void ciaa_servo_updatePosition(servo_channel_t servo_channel, float32_t angle)
 // =============================================================================
 static uint32_t angle_to_pwm(float32_t angle)
 {
-   int16_t int_degree = 0;
-  uint32_t pwm_pos    = 0;
+  float32_t int_degree = 0;
+  uint32_t  pwm_pos    = 0;
 
   if (angle < 0)
-    int_degree = (int16_t)(angle - 0.5f);
+    int_degree = angle;
 
   if (angle > 0)
-    int_degree = (int16_t)(angle + 0.5f);
+    int_degree = angle;
 
   int_degree = (int_degree > maxAngle) ? (maxAngle) : (int_degree);
   int_degree = (int_degree < minAngle) ? (minAngle) : (int_degree);

@@ -89,16 +89,16 @@ static void initPeripherals_and_Sensor(void)
   mpu9250_InitStruct_t mpu9250_InitStruct;
   mpu9250_InitStruct.Accel_Axes = MPU9250_ACCEL_XYZ_ENABLE;
   mpu9250_InitStruct.Accel_Scale = MPU9250_ACCEL_FULLSCALE_2G;
-  mpu9250_InitStruct.Accel_LPF = MPU9250_ACCEL_LPF_44_8HZ;
+  mpu9250_InitStruct.Accel_LPF = MPU9250_ACCEL_LPF_5_05HZ;
   mpu9250_InitStruct.Gyro_Axes = MPU9250_GYRO_XYZ_ENABLE;
   mpu9250_InitStruct.Gyro_Scale = MPU9250_GYRO_FULLSCALE_250DPS;
-  mpu9250_InitStruct.Gyro_LPF = MPU9250_GYRO_LPF_41HZ;
+  mpu9250_InitStruct.Gyro_LPF = MPU9250_GYRO_LPF_5HZ;
   mpu9250_InitStruct.SampleRate = 100;
   mpu9250_init(&mpu9250_InitStruct);
 
   filter_init_t filter_InitStruct;
-  filter_InitStruct.SampleRate = 100;
-  filter_InitStruct.Weight     = 0.90f;
+  filter_InitStruct.SampleRate = 300;
+  filter_InitStruct.Weight     = 0.95f;
   ciaa_estimator_init(&filter_InitStruct);
 
   servo_initStruct_t servo_InitStruct;
